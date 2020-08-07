@@ -19,6 +19,25 @@ button {
   padding: 5px 15px;
 }
 
+.start-btn-container {
+  background-color: inherit;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  z-index: 3;
+  opacity: 1;
+}
+
+.start-btn {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 select {
   width: 200px;
   padding: 5px;
