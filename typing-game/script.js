@@ -9,8 +9,9 @@ const settingsBtn = document.getElementById("settings-btn");
 const settings = document.getElementById("settings");
 const settingsForm = document.getElementById("settings-form");
 const difficultySelection = document.getElementById("difficulty");
-const startBtnElement = document.getElementById("start-btn-container");
+const startElement = document.getElementById("start-container");
 const startBtn = document.getElementById("start-btn");
+const highScoreElement = document.getElementById("high-score");
 
 // Array of words (or fetch from  API)
 const wordsList =
@@ -26,10 +27,17 @@ let score;
 // Define time
 let time;
 
+// Define highest score
+let highest = localStorage.getItem("highScore");
+// show highest score in html
+highScoreElement.innerHTML = `
+  <h3>Highest Score: ${highest}</h3>
+`;
+
 function startGame() {
-  startBtnElement.style.opacity = 0;
-  startBtnElement.style.zIndex = 0;
-  time = 2;
+  startElement.style.opacity = 0;
+  startElement.style.zIndex = 0;
+  time = 10;
   score = 0;
 }
 
@@ -89,6 +97,15 @@ function gameOver() {
     <button onclick="location.reload()">Restart</button>
     `;
   endgameElement.style.display = "flex";
+  let highScore = localStorage.getItem("highScore");
+  if (highScore === null) {
+    localStorage.setItem("highScore", score);
+  } else if (highScore <= score) {
+    localStorage.setItem("highScore", score);
+  } else {
+    localStorage.getItem("highScore");
+  }
+  // localStorage.setItem("highScore", highScore);
 }
 
 addWordToDOM();
