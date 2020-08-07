@@ -29,10 +29,14 @@ let time;
 
 // Define highest score
 let highest = localStorage.getItem("highScore");
-// show highest score in html
-highScoreElement.innerHTML = `
-  <h3>Highest Score: ${highest}</h3>
-`;
+// show highest score (if applicable) in html
+highest
+  ? (highScoreElement.innerHTML = `
+<h3>Highest Score: ${highest}</h3>
+`)
+  : (highScoreElement.innerHTML = `
+<h3>There is No saved high score on this computer yet!</h3>
+`);
 
 function startGame() {
   startElement.style.opacity = 0;
